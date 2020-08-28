@@ -60,3 +60,23 @@ rankTest('deliveryState is CA and isRush is true', t => {
 
     t.is(result,expectResult);
 });
+
+rankTest('deliveryState is MA and isRush is false', t => {
+    const anOrder = {
+        'deliveryState':'MA',
+        'placedOn':
+            {
+                'plusDays': function (deliveryTime) {
+                    return deliveryTime;
+                },
+            },
+    }
+
+    const isRush = false;
+
+    const result = deliveryDate(anOrder, isRush);
+
+    const expectResult = 4;
+
+    t.is(result,expectResult);
+});
