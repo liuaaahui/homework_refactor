@@ -2,7 +2,7 @@ function StateInclude(voyage){
   return [
     'china',
     'east-indies',
-  ].includes(voyage.zone);;
+  ].includes(voyage.zone);
 }
 
 function voyageRisk (voyage) {
