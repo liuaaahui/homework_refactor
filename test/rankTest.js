@@ -305,3 +305,16 @@ rankTest('test rating and result is A', t => {
 
   t.is(result,expectResult);
 });
+
+rankTest('test rating and result is B', t => {
+  const voyage = {
+    zone: 'china1',
+    length: 19,
+  };
+
+  const result = rating(voyage, history);
+
+  const expectResult = 'B';
+
+  t.is(result,expectResult);
+});
