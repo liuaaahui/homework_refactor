@@ -69,14 +69,7 @@ function voyageProfitFactor (voyage, history) {
   if (StateInclude(voyage)) {
     result += 1;
   }
-  if (extracted(voyage, history)) {
-    result += 3;
-    result += resultHandle(history, voyage);
-  }
-  else {
-    result += handleResult(history, voyage);
-  }
-  return result;
+  return result + (extracted(voyage, history) ? resultHandle(history, voyage) + 3 : handleResult(history, voyage));
 }
 
 function rating (voyage, history) {
