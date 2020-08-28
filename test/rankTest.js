@@ -9,7 +9,7 @@ rankTest('voyage length is 5', t => {
 
   const result = voyageRisk(voyage);
 
-  const expectResult = 2;
+  const expectResult = 3;
 
   t.is(result,expectResult);
 });
@@ -22,7 +22,20 @@ rankTest('voyage length is 9', t => {
 
   const result = voyageRisk(voyage);
 
-  const expectResult = 9;
+  const expectResult = 4;
+
+  t.is(result,expectResult);
+});
+
+rankTest('voyage length is 4', t => {
+  const voyage = {
+    zone: 'west-indies',
+    length: 4,
+  };
+
+  const result = voyageRisk(voyage);
+
+  const expectResult = 1;
 
   t.is(result,expectResult);
 });
