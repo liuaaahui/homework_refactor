@@ -101,3 +101,37 @@ rankTest('voyage do not has zone is china and history has zone is china', t => {
 
   t.is(result,expectResult);
 });
+
+rankTest('voyage has zone is china and history has zone is china and length is 5', t => {
+  const voyage = {
+    zone: 'china',
+    length: 4,
+  };
+
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    },{
+      zone: 'west-indies',
+      profit: 15,
+    },{
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+  ];
+
+  const result = captainHistoryRisk(voyage, history);
+
+  const expectResult = 0;
+
+  t.is(result,expectResult);
+});
