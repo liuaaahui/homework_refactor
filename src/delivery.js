@@ -11,15 +11,7 @@ function getDeliveryTimeIsRush(anOrder) {
 }
 
 function getDeliveryTimeIsNotRush(anOrder) {
-  let deliveryTime;
-  if (deliveryStateInclude(['MA', 'CT', 'NY',], anOrder.deliveryState)) {
-    deliveryTime = 2;
-  } else if (deliveryStateInclude(['ME', 'NH',], anOrder.deliveryState)) {
-    deliveryTime = 3;
-  } else {
-    deliveryTime = 4;
-  }
-  return deliveryTime;
+  return deliveryStateInclude(['MA', 'CT', 'NY',], anOrder.deliveryState) ? 2 : deliveryStateInclude(['ME', 'NH',], anOrder.deliveryState) ? 3 : 4;
 }
 
 function deliveryDate (anOrder, isRush) {
