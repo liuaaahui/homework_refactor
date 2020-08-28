@@ -39,7 +39,8 @@ function captainHistoryRisk (voyage, history) {
   return Math.max(result, 0);
 }
 
-function resultHandle(history, result, voyage) {
+function resultHandle(history, voyage) {
+  let result = 0;
   if (history.length > 10) {
     result += 1;
   }
@@ -52,7 +53,8 @@ function resultHandle(history, result, voyage) {
   return result;
 }
 
-function handleResult(history, result, voyage) {
+function handleResult(history, voyage) {
+  let result = 0;
   if (history.length > 8) {
     result += 1;
   }
@@ -69,10 +71,10 @@ function voyageProfitFactor (voyage, history) {
   }
   if (extracted(voyage, history)) {
     result += 3;
-    result = resultHandle(history, result, voyage);
+    result += resultHandle(history, voyage);
   }
   else {
-    result = handleResult(history, result, voyage);
+    result += handleResult(history, voyage);
   }
   return result;
 }
