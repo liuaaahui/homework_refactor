@@ -13,3 +13,13 @@ rankTest('Sample test1', t => {
         t.is(e.message,expectResult);
     }
 });
+
+rankTest('Sample test2', t => {
+    const employee = new Employee('penny', 'engineer');
+
+    const result = employee.toString();
+
+    const expectResult = 'penny (engineer)';
+
+    t.is(result,expectResult);
+});
