@@ -1,4 +1,6 @@
 const rankTest = require('ava');
+const {captainHistoryRisk} = require("../src/rank");
+const {hasChina} = require("../src/rank");
 const {voyageRisk} = require("../src/rank");
 
 rankTest('voyage length is 5', t => {
@@ -36,6 +38,36 @@ rankTest('voyage length is 4', t => {
   const result = voyageRisk(voyage);
 
   const expectResult = 1;
+
+  t.is(result,expectResult);
+});
+
+rankTest('voyage has zone is china and history has zone is china', t => {
+  const voyage = {
+    zone: 'china',
+    length: 4,
+  };
+
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    },{
+      zone: 'west-indies',
+      profit: 15,
+    },{
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+  ];
+
+  const result = captainHistoryRisk(voyage, history);
+
+  const expectResult = 4;
 
   t.is(result,expectResult);
 });
