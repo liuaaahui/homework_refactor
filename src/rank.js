@@ -1,3 +1,7 @@
+function StateInclude(include, deliveryState){
+  return include.includes(deliveryState);
+}
+
 function voyageRisk (voyage) {
   let result = 1;
   if (voyage.length > 4) {
@@ -6,10 +10,7 @@ function voyageRisk (voyage) {
   if (voyage.length > 8) {
     result += voyage.length - 8;
   }
-  if ([
-    'china',
-    'east-indies',
-  ].includes(voyage.zone)) {
+  if (StateInclude(['china', 'east-indies',], voyage.zone)) {
     result += 4;
   }
   return Math.max(result, 0);
