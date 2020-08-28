@@ -1,4 +1,5 @@
 const rankTest = require('ava');
+const {rating} = require("../src/rank");
 const {voyageProfitFactor} = require("../src/rank");
 const {captainHistoryRisk} = require("../src/rank");
 const {voyageRisk} = require("../src/rank");
@@ -293,6 +294,14 @@ rankTest('voyage do not has zone is china and length is 19 and history has zone 
   const result = voyageProfitFactor(voyage, history);
 
   const expectResult = 2;
+
+  t.is(result,expectResult);
+});
+
+rankTest('test rating and result is A', t => {
+  const result = rating(voyage, history);
+
+  const expectResult = 'A';
 
   t.is(result,expectResult);
 });
