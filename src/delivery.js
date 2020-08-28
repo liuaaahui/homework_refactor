@@ -2,6 +2,10 @@ function deliveryStateInclude(include, deliveryState){
   return include.includes(deliveryState);
 }
 
+function getPlusDays(anOrder, deliveryTime) {
+  return anOrder.placedOn.plusDays(1 + deliveryTime);
+}
+
 function deliveryDate (anOrder, isRush) {
   if (isRush) {
     let deliveryTime;
@@ -14,7 +18,7 @@ function deliveryDate (anOrder, isRush) {
     else {
       deliveryTime = 3;
     }
-    return anOrder.placedOn.plusDays(1 + deliveryTime);
+    return getPlusDays(anOrder, deliveryTime);
   }
   else {
     let deliveryTime;
