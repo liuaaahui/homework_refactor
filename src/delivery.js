@@ -3,7 +3,7 @@ function deliveryStateInclude(include, deliveryState){
 }
 
 function getPlusDays(anOrder, deliveryTime) {
-  return anOrder.placedOn.plusDays(1 + deliveryTime);
+  return anOrder.placedOn.plusDays(deliveryTime);
 }
 
 function getDeliveryTimeIsRush(anOrder) {
@@ -32,14 +32,8 @@ function getDeliveryTimeIsNotRush(anOrder) {
 }
 
 function deliveryDate (anOrder, isRush) {
-  if (isRush) {
-    let deliveryTime = getDeliveryTimeIsRush(anOrder);
-    return getPlusDays(anOrder, deliveryTime);
-  }
-  else {
-    let deliveryTime = getDeliveryTimeIsNotRush(anOrder);
-    return anOrder.placedOn.plusDays(2 + deliveryTime);
-  }
+  let deliveryTime = isRush ? getDeliveryTimeIsRush(anOrder)+1 : getDeliveryTimeIsNotRush(anOrder)+2;
+  return getPlusDays(anOrder, deliveryTime);
 }
 
 module.exports = {
