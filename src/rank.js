@@ -1,5 +1,8 @@
-function StateInclude(include, deliveryState){
-  return include.includes(deliveryState);
+function StateInclude(voyage){
+  return [
+    'china',
+    'east-indies',
+  ].includes(voyage.zone);;
 }
 
 function voyageRisk (voyage) {
@@ -10,7 +13,7 @@ function voyageRisk (voyage) {
   if (voyage.length > 8) {
     result += voyage.length - 8;
   }
-  if (StateInclude(['china', 'east-indies',], voyage.zone)) {
+  if (StateInclude(voyage)) {
     result += 4;
   }
   return Math.max(result, 0);
@@ -38,10 +41,7 @@ function captainHistoryRisk (voyage, history) {
 
 function voyageProfitFactor (voyage, history) {
   let result = 2;
-  if (voyage.zone === 'china') {
-    result += 1;
-  }
-  if (voyage.zone === 'east-indies') {
+  if (StateInclude(voyage)) {
     result += 1;
   }
   if (extracted(voyage, history)) {
