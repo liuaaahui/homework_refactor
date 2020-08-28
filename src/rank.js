@@ -52,11 +52,8 @@ function resultHandle(history, voyage) {
 
 function handleResult(history, voyage) {
   let result = 0;
-  if (history.length > 8) {
+  if (history.length > 8 && voyage.length <= 14) {
     result += 1;
-  }
-  if (voyage.length > 14) {
-    result -= 1;
   }
   return result;
 }
