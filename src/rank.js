@@ -52,6 +52,16 @@ function resultHandle(history, result, voyage) {
   return result;
 }
 
+function handleResult(history, result, voyage) {
+  if (history.length > 8) {
+    result += 1;
+  }
+  if (voyage.length > 14) {
+    result -= 1;
+  }
+  return result;
+}
+
 function voyageProfitFactor (voyage, history) {
   let result = 2;
   if (StateInclude(voyage)) {
@@ -62,12 +72,7 @@ function voyageProfitFactor (voyage, history) {
     result = resultHandle(history, result, voyage);
   }
   else {
-    if (history.length > 8) {
-      result += 1;
-    }
-    if (voyage.length > 14) {
-      result -= 1;
-    }
+    result = handleResult(history, result, voyage);
   }
   return result;
 }
