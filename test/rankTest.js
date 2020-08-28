@@ -335,3 +335,51 @@ rankTest('voyage has zone is china and length is 19 and history has zone is chin
 
   t.is(result,expectResult);
 });
+
+rankTest('voyage do not has zone is china and length is 19 and history has zone is china and length is 11', t => {
+  const voyage = {
+    zone: 'china1',
+    length: 19,
+  };
+
+  const history = [
+    {
+      zone: 'east-indies',
+      profit: 5,
+    },{
+      zone: 'west-indies',
+      profit: 15,
+    },{
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'east-indies',
+      profit: 5,
+    },{
+      zone: 'west-indies',
+      profit: 15,
+    },{
+      zone: 'china',
+      profit: -2,
+    },
+    {
+      zone: 'west-africa',
+      profit: 7,
+    },
+    {
+      zone: 'west-indies',
+      profit: 15,
+    },
+  ];
+
+  const result = voyageProfitFactor(voyage, history);
+
+  const expectResult = 2;
+
+  t.is(result,expectResult);
+});
