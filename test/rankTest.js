@@ -3,6 +3,53 @@ const {voyageProfitFactor} = require("../src/rank");
 const {captainHistoryRisk} = require("../src/rank");
 const {voyageRisk} = require("../src/rank");
 
+const voyage = {
+  zone: 'china',
+  length: 4,
+};
+
+const history = [
+  {
+    zone: 'east-indies',
+    profit: 5,
+  },{
+    zone: 'west-indies',
+    profit: 15,
+  },{
+    zone: 'china',
+    profit: -2,
+  },
+  {
+    zone: 'west-africa',
+    profit: 7,
+  },
+  {
+    zone: 'east-indies',
+    profit: 5,
+  },{
+    zone: 'west-indies',
+    profit: 15,
+  },{
+    zone: 'china',
+    profit: -2,
+  },
+  {
+    zone: 'west-africa',
+    profit: 7,
+  },
+  {
+    zone: 'west-indies',
+    profit: 15,
+  },{
+    zone: 'china',
+    profit: -2,
+  },
+  {
+    zone: 'west-africa',
+    profit: 8,
+  },
+];
+
 rankTest('voyage length is 5', t => {
   const voyage = {
     zone: 'west-indies',
@@ -43,11 +90,6 @@ rankTest('voyage length is 4', t => {
 });
 
 rankTest('voyage has zone is china and history has zone is china', t => {
-  const voyage = {
-    zone: 'china',
-    length: 4,
-  };
-
   const history = [
     {
       zone: 'east-indies',
@@ -197,11 +239,6 @@ rankTest('voyage has zone is east-indies and history do not has zone is china', 
 });
 
 rankTest('voyage has zone is china and history has zone is china and length is 4', t => {
-  const voyage = {
-    zone: 'china',
-    length: 4,
-  };
-
   const history = [
     {
       zone: 'east-indies',
@@ -227,53 +264,6 @@ rankTest('voyage has zone is china and history has zone is china and length is 4
 });
 
 rankTest('voyage has zone is china and history has zone is china and length is 11', t => {
-  const voyage = {
-    zone: 'china',
-    length: 4,
-  };
-
-  const history = [
-    {
-      zone: 'east-indies',
-      profit: 5,
-    },{
-      zone: 'west-indies',
-      profit: 15,
-    },{
-      zone: 'china',
-      profit: -2,
-    },
-    {
-      zone: 'west-africa',
-      profit: 7,
-    },
-    {
-      zone: 'east-indies',
-      profit: 5,
-    },{
-      zone: 'west-indies',
-      profit: 15,
-    },{
-      zone: 'china',
-      profit: -2,
-    },
-    {
-      zone: 'west-africa',
-      profit: 7,
-    },
-    {
-      zone: 'west-indies',
-      profit: 15,
-    },{
-      zone: 'china',
-      profit: -2,
-    },
-    {
-      zone: 'west-africa',
-      profit: 7,
-    },
-  ];
-
   const result = voyageProfitFactor(voyage, history);
 
   const expectResult = 7;
@@ -287,48 +277,6 @@ rankTest('voyage has zone is china and length is 19 and history has zone is chin
     length: 19,
   };
 
-  const history = [
-    {
-      zone: 'east-indies',
-      profit: 5,
-    },{
-      zone: 'west-indies',
-      profit: 15,
-    },{
-      zone: 'china',
-      profit: -2,
-    },
-    {
-      zone: 'west-africa',
-      profit: 7,
-    },
-    {
-      zone: 'east-indies',
-      profit: 5,
-    },{
-      zone: 'west-indies',
-      profit: 15,
-    },{
-      zone: 'china',
-      profit: -2,
-    },
-    {
-      zone: 'west-africa',
-      profit: 7,
-    },
-    {
-      zone: 'west-indies',
-      profit: 15,
-    },{
-      zone: 'china',
-      profit: -2,
-    },
-    {
-      zone: 'west-africa',
-      profit: 8,
-    },
-  ];
-
   const result = voyageProfitFactor(voyage, history);
 
   const expectResult = 7;
@@ -341,41 +289,6 @@ rankTest('voyage do not has zone is china and length is 19 and history has zone 
     zone: 'china1',
     length: 19,
   };
-
-  const history = [
-    {
-      zone: 'east-indies',
-      profit: 5,
-    },{
-      zone: 'west-indies',
-      profit: 15,
-    },{
-      zone: 'china',
-      profit: -2,
-    },
-    {
-      zone: 'west-africa',
-      profit: 7,
-    },
-    {
-      zone: 'east-indies',
-      profit: 5,
-    },{
-      zone: 'west-indies',
-      profit: 15,
-    },{
-      zone: 'china',
-      profit: -2,
-    },
-    {
-      zone: 'west-africa',
-      profit: 7,
-    },
-    {
-      zone: 'west-indies',
-      profit: 15,
-    },
-  ];
 
   const result = voyageProfitFactor(voyage, history);
 
