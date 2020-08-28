@@ -66,16 +66,16 @@ function voyageProfitFactor (voyage, history) {
   return result + (extracted(voyage, history) ? resultHandle(history, voyage) + 3 : handleResult(history, voyage));
 }
 
-function rating (voyage, history) {
+function createData(voyage, history) {
   const vpf = voyageProfitFactor(voyage, history);
   const vr = voyageRisk(voyage);
   const chr = captainHistoryRisk(voyage, history);
-  if (vpf * 3 > (vr + chr * 2)) {
-    return 'A';
-  }
-  else {
-    return 'B';
-  }
+  return {vpf, vr, chr};
+}
+
+function rating (voyage, history) {
+  const {vpf, vr, chr} = createData(voyage, history);
+  return vpf * 3 > (vr + chr * 2) ? 'A' : 'B';
 }
 
 module.exports = {
